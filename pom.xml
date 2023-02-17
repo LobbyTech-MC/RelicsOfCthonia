@@ -32,7 +32,33 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
-                <version>3.2.4</version>
+                <version>3.3.0</version>
+                <configuration>
+                    <!-- 你可以添加下面这一行，去除所有库中未使用的类，来减少生成jar的大小，非必须，但建议开启 -->
+                    <minimizeJar>true</minimizeJar>
+                    <relocations>
+                        <!-- 重要: 你需要将以下relocation(迁移)部分添加到你的pom.xml中 -->
+                        <relocation>
+                            <pattern>net.guizhanss.guizhanlib</pattern>
+                            <shadedPattern>ne.fnfal113.relicsofcthonia.guizhanlib</shadedPattern>
+                        </relocation>
+                        <relocation>
+                            <pattern>org.bstats</pattern>
+                            <shadedPattern>ne.fnfal113.relicsofcthonia.bstats</shadedPattern>
+                        </relocation>
+                        
+                    </relocations>
+
+                    <filters>
+                        <filter>
+                            <artifact>*:*</artifact>
+                            <excludes>
+                                <exclude>META-INF/*</exclude>
+                            </excludes>
+                        </filter>
+                    </filters>
+                </configuration>
+
                 <executions>
                     <execution>
                         <phase>package</phase>
@@ -44,15 +70,7 @@
                         </configuration>
                     </execution>
                 </executions>
-                <configuration>
-                    <minimizeJar>true</minimizeJar>
-                    <relocations>
-                        <relocation>
-                            <pattern>org.bstats</pattern>
-                            <shadedPattern>ne.fnfal113.relicsofcthonia.bstats</shadedPattern>
-                        </relocation>
-                    </relocations>
-                </configuration>
+                
             </plugin>
         </plugins>
         <resources>
@@ -83,7 +101,7 @@
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
-            <version>1.18.2-R0.1-SNAPSHOT</version>
+            <version>1.19.3-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
 
@@ -118,8 +136,15 @@
         <dependency>
             <groupId>net.guizhanss</groupId>
             <artifactId>GuizhanLibPlugin</artifactId>
-            <version>1.0.3</version>
+            <version>1.1.1</version>
             <scope>provided</scope>
+        </dependency>
+        
+        <dependency>
+            <groupId>net.guizhanss</groupId>
+            <artifactId>GuizhanLib-api</artifactId>
+            <version>1.1.1</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 </project>

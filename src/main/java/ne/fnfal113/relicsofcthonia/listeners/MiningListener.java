@@ -78,7 +78,12 @@ public class MiningListener implements Listener {
 
     }
 
-    @EventHandler
+    private Map<AbstractRelic, List<Material>> getWhereToDropMaterialMap() {
+		// TODO Auto-generated method stub
+		return whereToDropMaterialMap;
+	}
+
+	@EventHandler
     public void onBlockPlace(BlockPlaceEvent event){
         if(event.isCancelled()){
             return;

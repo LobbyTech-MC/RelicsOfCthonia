@@ -12,6 +12,7 @@ import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -230,9 +231,10 @@ public class ConfigManager {
     /**
      *
      * @param jsonName the name of the json file that will be saved
+     * @throws FileNotFoundException 
      */
     @SneakyThrows
-    public Object loadJson(String jsonName) {
+    public Object loadJson(String jsonName) throws FileNotFoundException {
         try {
             // create temporary file
             File file = File.createTempFile(jsonName, ".json", new File(System.getProperty("java.io.tmpdir")));
@@ -281,7 +283,12 @@ public class ConfigManager {
         return getIntegerValues().getOrDefault(itemSection + "." + setting, 0);
     }
 
-    /**
+    private Map<String, Integer> getIntegerValues() {
+		// TODO Auto-generated method stub
+		return integerValues;
+	}
+
+	/**
      *
      * @param itemSection the config section
      * @param setting the config section key
@@ -291,7 +298,12 @@ public class ConfigManager {
         return getDoubleValues().getOrDefault(itemSection + "." + setting, 0.0);
     }
 
-    /**
+    private Map<String, Double> getDoubleValues() {
+		// TODO Auto-generated method stub
+		return doubleValues;
+	}
+
+	/**
      *
      * @param itemSection the config section
      * @param setting the config section key
@@ -301,7 +313,12 @@ public class ConfigManager {
         return getStringValues().getOrDefault(itemSection + "." + setting, "null");
     }
 
-    /**
+    private Map<String, String> getStringValues() {
+		// TODO Auto-generated method stub
+		return stringValues;
+	}
+
+	/**
      *
      * @param itemSection the config section
      * @param setting the config section key
@@ -311,7 +328,12 @@ public class ConfigManager {
         return getStringListValues().getOrDefault(itemSection + "." + setting, new ArrayList<>());
     }
 
-    /**
+    private Map<String, List<String>> getStringListValues() {
+		// TODO Auto-generated method stub
+		return stringListValues;
+	}
+
+	/**
      *
      * @param itemSection the config section
      * @param setting the config section key
@@ -321,7 +343,12 @@ public class ConfigManager {
         return getBooleanValues().getOrDefault(itemSection + "." + setting, false);
     }
 
-    public void setMapIntValue(String itemSection, String setting, int value){
+    private Map<String, Boolean> getBooleanValues() {
+		// TODO Auto-generated method stub
+		return booleanValues;
+	}
+
+	public void setMapIntValue(String itemSection, String setting, int value){
         getIntegerValues().put(itemSection + "." + setting, value);
     }
 

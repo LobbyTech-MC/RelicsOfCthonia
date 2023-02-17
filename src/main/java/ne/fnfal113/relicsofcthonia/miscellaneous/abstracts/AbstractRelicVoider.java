@@ -80,7 +80,12 @@ public class AbstractRelicVoider extends UnplaceableBlock {
         ));
     }
 
-    public void onClick(ItemStack itemStack, Player player){
+    private NamespacedKey getConditionKey() {
+		// TODO Auto-generated method stub
+		return conditionKey;
+	}
+
+	public void onClick(ItemStack itemStack, Player player){
         ItemMeta meta = itemStack.getItemMeta();
         PersistentDataContainer pdc = meta.getPersistentDataContainer();
         int conditionQuota = pdc.getOrDefault(getConditionKey(), PersistentDataType.INTEGER, 0);
@@ -120,5 +125,15 @@ public class AbstractRelicVoider extends UnplaceableBlock {
             event.setCancelled(true);
         }
     }
+
+	private boolean isNotifEnabled() {
+		// TODO Auto-generated method stub
+		return notifEnabled;
+	}
+
+	public Rarity getRarity() {
+		// TODO Auto-generated method stub
+		return rarity;
+	}
 
 }

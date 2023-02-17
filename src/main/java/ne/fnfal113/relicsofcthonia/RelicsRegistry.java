@@ -16,4 +16,14 @@ public class RelicsRegistry {
     @Getter
     private final Map<AbstractRelic, List<String>> whereToDropMobMap = new HashMap<>();
 
+	public Map<AbstractRelic, List<Material>> getWhereToDropMaterialMap() {
+		// TODO Auto-generated method stub
+		return whereToDropMaterialMap;
+	}
+
+	public Map<AbstractRelic, List<String>> getWhereToDropMobMap() {
+		// TODO Auto-generated method stub
+		return whereToDropMobMap;
+	}
+
 }

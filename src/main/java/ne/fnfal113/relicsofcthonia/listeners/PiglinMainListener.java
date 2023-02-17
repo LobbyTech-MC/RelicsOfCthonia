@@ -117,7 +117,12 @@ public class PiglinMainListener implements Listener {
         }
     }
 
-    @EventHandler(priority = EventPriority.NORMAL)
+    private Map<UUID, UUID> getCurrentTradeMap() {
+		// TODO Auto-generated method stub
+		return currentTradeMap;
+	}
+
+	@EventHandler(priority = EventPriority.NORMAL)
     public void onDrop(EntityDropItemEvent event){
         if(!(event.getEntity() instanceof Piglin)){
             return;

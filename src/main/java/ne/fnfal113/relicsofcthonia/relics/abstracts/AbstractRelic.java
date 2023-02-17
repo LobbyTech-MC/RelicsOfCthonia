@@ -1,6 +1,23 @@
 package ne.fnfal113.relicsofcthonia.relics.abstracts;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
+import java.util.function.Consumer;
+
+import javax.annotation.Nonnull;
+import javax.annotation.ParametersAreNonnullByDefault;
+
+import org.bukkit.Material;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.persistence.PersistentDataContainer;
+import org.bukkit.persistence.PersistentDataType;
+
 import com.google.gson.JsonObject;
+
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
@@ -14,20 +31,6 @@ import ne.fnfal113.relicsofcthonia.relics.implementation.OffHandRightClickHandle
 import ne.fnfal113.relicsofcthonia.relics.implementation.Rarity;
 import ne.fnfal113.relicsofcthonia.utils.Utils;
 import net.guizhanss.relicsofcthonia.types.LoreType;
-import org.bukkit.Material;
-import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.persistence.PersistentDataContainer;
-import org.bukkit.persistence.PersistentDataType;
-
-import javax.annotation.Nonnull;
-import javax.annotation.ParametersAreNonnullByDefault;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.ThreadLocalRandom;
-import java.util.function.Consumer;
 
 public abstract class AbstractRelic extends SlimefunItem implements OffHandRightClickHandler {
 
@@ -66,7 +69,12 @@ public abstract class AbstractRelic extends SlimefunItem implements OffHandRight
        Utils.addLoreByStringList(this.getItem(), this.getId(), "piglin-barter-rewards", "猪灵交换物列表:", "&a", "‣ " + getPiglinRewardAmount() + "x ", "", LoreType.MATERIAL);
     }
 
-    public void initializeSettings(double dropChance, int piglinRewardAmount, int defaultDropSize){
+    public int getPiglinRewardAmount() {
+		// TODO Auto-generated method stub
+		return piglinRewardAmount;
+	}
+
+	public void initializeSettings(double dropChance, int piglinRewardAmount, int defaultDropSize){
         initNetherMaterials();
         initSingleSectionSettings(dropChance, piglinRewardAmount);
         initDefaultWhereToDrop(defaultDropSize);
@@ -106,7 +114,17 @@ public abstract class AbstractRelic extends SlimefunItem implements OffHandRight
         }
     }
 
-    public void initNetherMaterials(){
+    private RelicsRegistry getRelicsRegistry() {
+		// TODO Auto-generated method stub
+		return relicsRegistry;
+	}
+
+	private ConfigManager getConfigManager() {
+		// TODO Auto-generated method stub
+		return configManager;
+	}
+
+	public void initNetherMaterials(){
         getNetherMaterials().addAll(NetherMaterials.BASE_STONES_NETHER.getMaterial());
         getNetherMaterials().addAll(NetherMaterials.WART_BLOCKS.getMaterial());
         getNetherMaterials().addAll(NetherMaterials.GROW_MUSHROOM_BLOCKS.getMaterial());
@@ -115,7 +133,12 @@ public abstract class AbstractRelic extends SlimefunItem implements OffHandRight
         getNetherMaterials().addAll(NetherMaterials.OTHER_BLOCKS.getMaterial());
     }
 
-    public void initDefaultPiglinRewards(int defaultDropSize) {
+    private List<Material> getNetherMaterials() {
+		// TODO Auto-generated method stub
+		return netherMaterials;
+	}
+
+	public void initDefaultPiglinRewards(int defaultDropSize) {
         List<String> rewardList = new ArrayList<>();
         List<String> randomRewardList = new ArrayList<>();
 
@@ -236,5 +259,15 @@ public abstract class AbstractRelic extends SlimefunItem implements OffHandRight
     public boolean isEnchantable(){
         return false;
     }
+
+	public double getDropChance() {
+		// TODO Auto-generated method stub
+		return dropChance;
+	}
+
+	public List<String> getPiglinRewardList() {
+		// TODO Auto-generated method stub
+		return piglinRewardList;
+	}
 
 }

@@ -94,4 +94,9 @@ public class MobKillListener implements Listener {
 
     }
 
+	private Map<AbstractRelic, List<String>> getWhereToDropMobMap() {
+		// TODO Auto-generated method stub
+		return whereToDropMobMap;
+	}
+
 }
