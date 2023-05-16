@@ -1,6 +1,5 @@
 package ne.fnfal113.relicsofcthonia.relics.abstracts;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
@@ -31,20 +30,6 @@ import ne.fnfal113.relicsofcthonia.relics.implementation.OffHandRightClickHandle
 import ne.fnfal113.relicsofcthonia.relics.implementation.Rarity;
 import ne.fnfal113.relicsofcthonia.utils.Utils;
 import net.guizhanss.relicsofcthonia.types.LoreType;
-
-import org.bukkit.Material;
-import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.persistence.PersistentDataContainer;
-import org.bukkit.persistence.PersistentDataType;
-
-import javax.annotation.Nonnull;
-import javax.annotation.ParametersAreNonnullByDefault;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.ThreadLocalRandom;
-import java.util.function.Consumer;
 
 public abstract class AbstractRelic extends SlimefunItem implements OffHandRightClickHandler {
 
@@ -157,7 +142,12 @@ public abstract class AbstractRelic extends SlimefunItem implements OffHandRight
         getNetherMaterials().addAll(NetherMaterials.OTHER_BLOCKS.getMaterial());
     }
 
-    public void initSingleSectionSettings(double dropChance, int piglinRewardAmount) {
+    private List<Material> getNetherMaterials() {
+		// TODO Auto-generated method stub
+		return netherMaterials;
+	}
+
+	public void initSingleSectionSettings(double dropChance, int piglinRewardAmount) {
         try {
             getConfigManager().initializeConfig(this.getId(), "drop-chance", dropChance, "relic-settings");
             getConfigManager().initializeConfig(this.getId(), "piglin-reward-amount", piglinRewardAmount, "relic-settings");
@@ -281,11 +271,6 @@ public abstract class AbstractRelic extends SlimefunItem implements OffHandRight
 	public double getDropChance() {
 		// TODO Auto-generated method stub
 		return dropChance;
-	}
-
-	public List<String> getPiglinRewardList() {
-		// TODO Auto-generated method stub
-		return piglinRewardList;
 	}
 
 }

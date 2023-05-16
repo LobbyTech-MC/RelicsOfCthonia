@@ -109,4 +109,8 @@ public class ConfigManager {
         }
     }
 
+	private Map<String, FileConfiguration> getFileConfigurationMap() {
+		return fileConfigurationMap;
+	}
+
 }
