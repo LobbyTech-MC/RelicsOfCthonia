@@ -45,14 +45,16 @@ public class Utils {
 
     // set or update the given string to replace with the given config section
     // and settings that returns an integer value as the new string.
-    public static void setLoreByIntValue(@Nonnull ItemStack itemStack, String section, String settings, String stringToReplace, String color, String suffix){
+
+
+    public static void setLoreByConfigValue(ItemStack itemStack, String section, String settings, String stringToReplace, String color, String suffix, String fileName){
         ItemMeta meta = itemStack.getItemMeta();
         List<String> lore = meta.getLore();
 
         for(int i = 0 ; i < lore.size(); i++){
             if(lore.get(i).contains(Utils.colorTranslator(color + stringToReplace))){
-                int value = RelicsOfCthonia.getInstance().getConfigManager().getValueById(section, settings);
-                if(value != 0) {
+                Object value = RelicsOfCthonia.getInstance().getConfigManager().getCustomConfig(fileName).get(section + "." + settings);
+                if(!value.equals(0) && !value.equals(0.0)) {
                     String line = lore.get(i).replace(Utils.colorTranslator(color + stringToReplace),
                             Utils.colorTranslator(color + value + suffix));
 
@@ -64,34 +66,13 @@ public class Utils {
         itemStack.setItemMeta(meta);
     }
 
-    public static void setLoreByFixedIntValue(@Nonnull ItemStack itemStack, int value, String stringToReplace, String color, String suffix){
+    public static void setLoreByFixedIntValue(ItemStack itemStack, int value, String stringToReplace, String color, String suffix){
         ItemMeta meta = itemStack.getItemMeta();
         List<String> lore = meta.getLore();
 
         for(int i = 0 ; i < lore.size(); i++){
             if(lore.get(i).contains(Utils.colorTranslator(color + stringToReplace))){
                 if(value != 0) {
-                    String line = lore.get(i).replace(Utils.colorTranslator(color + stringToReplace),
-                            Utils.colorTranslator(color + value + suffix));
-
-                    lore.set(i, line);
-                }
-            }
-        }
-        meta.setLore(lore);
-        itemStack.setItemMeta(meta);
-    }
-
-    // set or update the given string to replace with the given config section
-    // and settings that returns a double value as the new string.
-    public static void setLoreByDoubleValue(@Nonnull ItemStack itemStack, String section, String settings, String stringToReplace, String color, String suffix){
-        ItemMeta meta = itemStack.getItemMeta();
-        List<String> lore = meta.getLore();
-
-        for(int i = 0 ; i < lore.size(); i++){
-            if(lore.get(i).contains(Utils.colorTranslator(color + stringToReplace))){
-                double value = RelicsOfCthonia.getInstance().getConfigManager().getDoubleValueById(section, settings);
-                if(value != 0.0){
                     String line = lore.get(i).replace(Utils.colorTranslator(color + stringToReplace),
                             Utils.colorTranslator(color + value + suffix));
 
@@ -104,7 +85,9 @@ public class Utils {
     }
 
     // 对 lore 中显示的物品进行汉化
-    public static void addLoreByStringList(@Nonnull ItemStack itemStack, String section, String settings, String stringToReplace, String color, String prefix, String suffix, LoreType loreType){
+    public static void setLoreByConfigStringList(@Nonnull ItemStack itemStack, String section, String settings,
+                                                 String stringToReplace, String color, String prefix, String suffix,
+                                                 String configFileName, LoreType loreType){
         Function<String, String> loreHandler;
         switch (loreType) {
             case MATERIAL:
@@ -116,12 +99,15 @@ public class Utils {
             default:
                 loreHandler = defaultLoreHandler;
         }
-        addLoreByStringList(itemStack, section, settings, stringToReplace, color, prefix, suffix, loreHandler);
+        setLoreByConfigStringList(itemStack, section, settings, stringToReplace, color, prefix, suffix,
+            configFileName, loreHandler);
     }
 
     // loops the provided list of string and appends them on the designated index
     // based on the string that will be replaced, but instead it is used as the index
-    private static void addLoreByStringList(@Nonnull ItemStack itemStack, String section, String settings, String stringToReplace, String color, String prefix, String suffix, Function<String, String> handler){
+    public static void setLoreByConfigStringList(ItemStack itemStack, String section, String settings,
+                                                 String stringToReplace, String color, String prefix, String suffix,
+                                                 String configFileName, Function<String, String> handler){
         ConfigManager configManager = RelicsOfCthonia.getInstance().getConfigManager();
         ItemMeta meta = itemStack.getItemMeta();
         List<String> lore = meta.getLore();
@@ -134,8 +120,8 @@ public class Utils {
             }
         }
 
-        for (int x = 0; x <= RelicsOfCthonia.getInstance().getConfigManager().getStringListById(section, settings).size() - 1; x++) {
-            String value = configManager.getStringListById(section, settings).get(x);
+        for (int x = 0; x < configManager.getCustomConfig(configFileName).getStringList(section + "." + settings).size(); x++) {
+            String value = configManager.getCustomConfig("relic-settings").getStringList(section + "." + settings).get(x);
 
             if(!value.isEmpty()) {
                 lore.add(j + 1, Utils.colorTranslator(color + prefix + handler.apply(value) + suffix));
@@ -162,5 +148,8 @@ public class Utils {
         return new NamespacedKey(RelicsOfCthonia.getInstance(), id.toLowerCase());
     }
 
+    public static <T> void logger(String prefix, T obj){
+        RelicsOfCthonia.getInstance().getLogger().info(prefix+ ": " + obj.toString());
+    }
 
 }

@@ -6,3 +6,5 @@ authors: [ FN_FAL113 ]
 description: My Slimefun addon jam 2022 entry which is based on nether theme
 website: https://github.com/FN-FAL113
 depend: [Slimefun]
+softdepend:
+  - GuizhanLibPlugin

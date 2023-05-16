@@ -6,7 +6,7 @@
 
     <groupId>ne.fnfal113</groupId>
     <artifactId>RelicsOfCthonia</artifactId>
-    <version>Unofficial-1.4</version>
+    <version>Unofficial-1.5</version>
     <packaging>jar</packaging>
 
     <name>RelicsOfCthonia</name>
@@ -136,7 +136,7 @@
         <dependency>
             <groupId>net.guizhanss</groupId>
             <artifactId>GuizhanLibPlugin</artifactId>
-            <version>1.1.1</version>
+            <version>1.2.0</version>
             <scope>provided</scope>
         </dependency>
         

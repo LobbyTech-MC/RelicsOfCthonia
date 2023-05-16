@@ -73,6 +73,7 @@ public class MobKillListener implements Listener {
                     continue;
                 }
 
+                // check if relic mob list contains killed mob type
                 if(entry.getValue().contains(entityType)){
                     double randomOrigin = currentRandomThread.nextDouble(0.0, 60);
                     double randomNum = currentRandomThread.nextDouble(randomOrigin, 100);
