@@ -1,24 +1,27 @@
 package ne.fnfal113.relicsofcthonia.utils;
 
-import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
-import ne.fnfal113.relicsofcthonia.RelicsOfCthonia;
-import ne.fnfal113.relicsofcthonia.config.ConfigManager;
-import net.guizhanss.guizhanlib.minecraft.helper.MaterialHelper;
-import net.guizhanss.guizhanlib.minecraft.helper.entity.EntityTypeHelper;
-import net.guizhanss.guizhanlib.utils.StringUtil;
-import net.guizhanss.relicsofcthonia.types.LoreType;
-import net.md_5.bungee.api.ChatColor;
+import java.util.List;
+import java.util.function.Consumer;
+import java.util.function.Function;
+
+import javax.annotation.Nonnull;
+
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.scheduler.BukkitTask;
 
-import javax.annotation.Nonnull;
-import java.util.List;
-import java.util.function.Consumer;
-import java.util.function.Function;
+import cn.whiteg.chanlang.LangUtils;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
+import ne.fnfal113.relicsofcthonia.RelicsOfCthonia;
+import ne.fnfal113.relicsofcthonia.config.ConfigManager;
+import net.guizhanss.guizhanlib.minecraft.helper.entity.EntityTypeHelper;
+import net.guizhanss.guizhanlib.utils.StringUtil;
+import net.guizhanss.relicsofcthonia.types.LoreType;
+import net.md_5.bungee.api.ChatColor;
 
 public class Utils {
 
@@ -27,7 +30,8 @@ public class Utils {
         if (sfItem != null) {
             return sfItem.getItemName();
         } else {
-            return MaterialHelper.getName(value);
+        	Material mat = Material.getMaterial(value.toUpperCase());
+            return LangUtils.getMaterialName(mat);
         }
     };
     private static final Function<String, String> entityTypeLoreHandler = (value) ->

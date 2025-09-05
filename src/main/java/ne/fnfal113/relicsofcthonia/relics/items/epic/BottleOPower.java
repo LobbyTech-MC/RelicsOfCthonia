@@ -31,8 +31,8 @@ public class BottleOPower extends AbstractRelic {
     public void onItemRightClick(PlayerInteractEvent event, Player player, ItemStack itemInOffhand) {
         consumeRelic(itemInOffhand);
 
-        player.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 400, 1));
-        player.addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE, 400, 1));
+        player.addPotionEffect(new PotionEffect(PotionEffectType.RESISTANCE, 400, 1));
+        player.addPotionEffect(new PotionEffect(PotionEffectType.STRENGTH, 400, 1));
         player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 400, 0));
 
         Utils.sendRelicMessage("&e力量之瓶给予你药水效果! 是时候和别人打一架了!", player);

@@ -30,9 +30,9 @@ public class Mushroom extends AbstractRelic {
     @Override
     public void onItemRightClick(PlayerInteractEvent event, Player player, ItemStack itemInOffhand) {
 
-        if(!player.hasPotionEffect(PotionEffectType.CONFUSION)){
+        if(!player.hasPotionEffect(PotionEffectType.NAUSEA)){
             consumeRelic(itemInOffhand);
-            player.addPotionEffect(new PotionEffect(PotionEffectType.CONFUSION, 160, 1));
+            player.addPotionEffect(new PotionEffect(PotionEffectType.NAUSEA, 160, 1));
 
             Utils.sendRelicMessage("&e这些蘑菇已经无法食用了! 但你可以把它出售.", player);
         }

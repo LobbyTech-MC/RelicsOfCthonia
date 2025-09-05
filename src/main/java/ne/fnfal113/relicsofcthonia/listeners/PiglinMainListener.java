@@ -206,7 +206,7 @@ public class PiglinMainListener implements Listener {
                 });
 
                 executeTradeMessage(event, "&a交易成功! 猪灵非常满意这件遗物!");
-                piglin.getWorld().spawnParticle(Particle.VILLAGER_HAPPY, piglin.getLocation().add(0, 2.2, 0), 0);
+                piglin.getWorld().spawnParticle(Particle.HAPPY_VILLAGER, piglin.getLocation().add(0, 2.2, 0), 0);
                 piglin.getWorld().playSound(piglin.getLocation(), Sound.ENTITY_PIGLIN_ADMIRING_ITEM, 1.0F, 1.0F);
 
                 if(!haveCondition){
