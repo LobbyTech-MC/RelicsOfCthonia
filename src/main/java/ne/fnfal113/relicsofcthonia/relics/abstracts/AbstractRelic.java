@@ -219,7 +219,7 @@ public abstract class AbstractRelic extends SlimefunItem implements OffHandRight
         }
     }
 
-    public ItemStack setRelicCondition(boolean isNaturallyDropped, int condition){
+    public ItemStack setRelicConditionAndGet(boolean isNaturallyDropped, int condition){
         ItemStack itemStack = this.getItem().clone();
         ItemMeta meta = itemStack.getItemMeta();
         PersistentDataContainer pdc = meta.getPersistentDataContainer();

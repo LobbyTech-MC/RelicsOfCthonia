@@ -46,7 +46,7 @@ public class RegisterRelics {
         new CthonianPearl(RelicItems.COMMON_RELIC, RelicItems.COMMON_RELIC_CTHONIAN_PEARL, DropType.DROP_TYPE, new ItemStack[]{
                 null, null, null,
                 null, null, null,
-                null, null, null}, 13.57, 3, 3)
+                null, null, null}, 12.57, 3, 3)
                 .register(instance);
 
         new FishingSack(RelicItems.COMMON_RELIC, RelicItems.COMMON_RELIC_FISHING_SACK, DropType.DROP_TYPE, new ItemStack[]{
@@ -58,31 +58,31 @@ public class RegisterRelics {
         new HealingPotion(RelicItems.COMMON_RELIC, RelicItems.COMMON_RELIC_HEALING_POTION, DropType.DROP_TYPE, new ItemStack[]{
                 null, null, null,
                 null, null, null,
-                null, null, null}, 11.32, 3, 3)
+                null, null, null}, 12.32, 3, 3)
                 .register(instance);
 
         new LeatherHelmet(RelicItems.COMMON_RELIC, RelicItems.COMMON_RELIC_LEATHER_HELMET, DropType.DROP_TYPE, new ItemStack[]{
                 null, null, null,
                 null, null, null,
-                null, null, null}, 13.24, 3, 3)
+                null, null, null}, 12.24, 3, 3)
                 .register(instance);
 
         new Mushroom(RelicItems.COMMON_RELIC, RelicItems.COMMON_RELIC_MUSHROOM, DropType.DROP_TYPE, new ItemStack[]{
                 null, null, null,
                 null, null, null,
-                null, null, null}, 15.18, 3, 3)
+                null, null, null}, 12.18, 3, 3)
                 .register(instance);
 
         new PettyMarbleBlock(RelicItems.COMMON_RELIC, RelicItems.COMMON_RELIC_PETTY_MARBLE_BLOCK, DropType.DROP_TYPE, new ItemStack[]{
                 null, null, null,
                 null, null, null,
-                null, null, null}, 14.53, 3, 3)
+                null, null, null}, 12.53, 3, 3)
                 .register(instance);
 
         new RingOfSuffering(RelicItems.COMMON_RELIC, RelicItems.COMMON_RELIC_RING_OF_SUFFERING, DropType.DROP_TYPE, new ItemStack[]{
                 null, null, null,
                 null, null, null,
-                null, null, null}, 13.54, 3, 3)
+                null, null, null}, 12.54, 3, 3)
                 .register(instance);
 
 
@@ -90,86 +90,86 @@ public class RegisterRelics {
         new AgedWine(RelicItems.UNCOMMON_RELIC, RelicItems.UNCOMMON_RELIC_AGED_WINE, DropType.DROP_TYPE, new ItemStack[]{
                 null, null, null,
                 null, null, null,
-                null, null, null}, 11.32, 2, 3)
+                null, null, null}, 9.32, 2, 3)
                 .register(instance);
 
         new BlueGlowstone(RelicItems.UNCOMMON_RELIC, RelicItems.UNCOMMON_RELIC_BLUE_GLOWSTONE, DropType.DROP_TYPE, new ItemStack[]{
                 null, null, null,
                 null, null, null,
-                null, null, null}, 9.02, 2, 3)
+                null, null, null},9.02, 2, 3)
                 .register(instance);
 
         new CthonianToken(RelicItems.UNCOMMON_RELIC, RelicItems.UNCOMMON_RELIC_CTHONIAN_TOKEN, DropType.DROP_TYPE, new ItemStack[]{
                 null, null, null,
                 null, null, null,
-                null, null, null}, 10.01, 2, 3)
+                null, null, null}, 9.01, 2, 3)
                 .register(instance);
 
         new GrayBerry(RelicItems.UNCOMMON_RELIC, RelicItems.UNCOMMON_RELIC_GRAY_BERRY, DropType.DROP_TYPE, new ItemStack[]{
                 null, null, null,
                 null, null, null,
-                null, null, null}, 12.38, 2, 3)
+                null, null, null}, 9.38, 2, 3)
                 .register(instance);
 
         new PinkSalt(RelicItems.UNCOMMON_RELIC, RelicItems.UNCOMMON_RELIC_PINK_SALT, DropType.DROP_TYPE, new ItemStack[]{
                 null, null, null,
                 null, null, null,
-                null, null, null}, 11.15, 2, 3)
+                null, null, null}, 9.15, 2, 3)
                 .register(instance);
 
         new SkullHat(RelicItems.UNCOMMON_RELIC, RelicItems.UNCOMMON_RELIC_SKULL_HAT, DropType.DROP_TYPE, new ItemStack[]{
                 null, null, null,
                 null, null, null,
-                null, null, null}, 10.62, 2, 3)
+                null, null, null}, 9.62, 2, 3)
                 .register(instance);
 
         new TanzaniteBlock(RelicItems.UNCOMMON_RELIC, RelicItems.UNCOMMON_RELIC_TANZANITE_BLOCK, DropType.DROP_TYPE, new ItemStack[]{
                 null, null, null,
                 null, null, null,
-                null, null, null}, 13.32, 2, 3)
+                null, null, null}, 9.32, 2, 3)
                 .register(instance);
 
         // Rare Relics
         new BlazeAshes(RelicItems.RARE_RELIC, RelicItems.RARE_RELIC_BLAZE_ASHES, DropType.DROP_TYPE, new ItemStack[]{
                 null, null, null,
                 null, null, null,
-                null, null, null}, 8.77, 1, 2)
+                null, null, null}, 7.14, 1, 2)
                 .register(instance);
 
         new CeruleanGem(RelicItems.RARE_RELIC, RelicItems.RARE_RELIC_CERULEAN_GEM, DropType.DROP_TYPE, new ItemStack[]{
                 null, null, null,
                 null, null, null,
-                null, null, null}, 9.83, 1, 2)
+                null, null, null}, 7.05, 1, 2)
                 .register(instance);
 
         new CrossedSwords(RelicItems.RARE_RELIC, RelicItems.RARE_RELIC_CROSSED_SWORDS, DropType.DROP_TYPE, new ItemStack[]{
                 null, null, null,
                 null, null, null,
-                null, null, null}, 7.88, 1, 2)
+                null, null, null}, 7.54, 1, 2)
                 .register(instance);
 
         new GoldenJar(RelicItems.RARE_RELIC, RelicItems.RARE_RELIC_GOLDEN_JAR, DropType.DROP_TYPE, new ItemStack[]{
                 null, null, null,
                 null, null, null,
-                null, null, null}, 6.13, 1, 2)
+                null, null, null}, 7.32, 1, 2)
                 .register(instance);
 
         new HornOfTaurus(RelicItems.RARE_RELIC, RelicItems.RARE_RELIC_HORN_OF_TAURUS, DropType.DROP_TYPE, new ItemStack[]{
                 null, null, null,
                 null, null, null,
-                null, null, null}, 8.54, 1, 2)
+                null, null, null}, 7.54, 1, 2)
                 .register(instance);
 
         new MarriageRing(RelicItems.RARE_RELIC, RelicItems.RARE_RELIC_MARRIAGE_RING, DropType.DROP_TYPE, new ItemStack[]{
                 null, null, null,
                 null, null, null,
-                null, null, null}, 7.72, 1, 3)
+                null, null, null}, 7.12, 1, 3)
                 .register(instance);
 
         new TerracottaPot(RelicItems.RARE_RELIC, RelicItems.RARE_RELIC_TERRACOTTA_POT, DropType.DROP_TYPE, new ItemStack[]{
                 null, null, null,
                 null, null, null,
-                null, null, null}, 9.91, 1, 3)
+                null, null, null}, 7.91, 1, 3)
                 .register(instance);
 
 
@@ -177,7 +177,7 @@ public class RegisterRelics {
         new BottleOPower(RelicItems.EPIC_RELIC, RelicItems.EPIC_RELIC_BOTTLE_O_POWER, DropType.DROP_TYPE, new ItemStack[]{
                 null, null, null,
                 null, null, null,
-                null, null, null}, 5.42, 1, 2)
+                null, null, null}, 4.42, 1, 2)
                 .register(instance);
 
         new FlawlessAquaGem(RelicItems.EPIC_RELIC, RelicItems.EPIC_RELIC_FLAWLESS_AQUA_GEM, DropType.DROP_TYPE, new ItemStack[]{
@@ -189,25 +189,25 @@ public class RegisterRelics {
         new LuminousPearl(RelicItems.EPIC_RELIC, RelicItems.EPIC_RELIC_LUMINOUS_PEARL, DropType.DROP_TYPE, new ItemStack[]{
                 null, null, null,
                 null, null, null,
-                null, null, null}, 6.67, 1, 2)
+                null, null, null}, 4.67, 1, 2)
                 .register(instance);
 
         new ValiantTalisman(RelicItems.EPIC_RELIC, RelicItems.EPIC_RELIC_VALIANT_TALISMAN, DropType.DROP_TYPE, new ItemStack[]{
                 null, null, null,
                 null, null, null,
-                null, null, null}, 5.32, 1, 2)
+                null, null, null}, 4.32, 1, 2)
                 .register(instance);
 
         new FervorHelmet(RelicItems.EPIC_RELIC, RelicItems.EPIC_RELIC_FERVOR_HELMET, DropType.DROP_TYPE, new ItemStack[]{
                 null, null, null,
                 null, null, null,
-                null, null, null}, 5.13, 1, 2)
+                null, null, null}, 4.13, 1, 2)
                 .register(instance);
 
         new ThunderInABottle(RelicItems.EPIC_RELIC, RelicItems.EPIC_RELIC_THUNDER_IN_A_BOTTLE, DropType.DROP_TYPE, new ItemStack[]{
                 null, null, null,
                 null, null, null,
-                null, null, null}, 5.88, 1, 2)
+                null, null, null}, 4.34, 1, 2)
                 .register(instance);
 
 
@@ -215,37 +215,37 @@ public class RegisterRelics {
         new EyeOfSauron(RelicItems.LEGENDARY_RELIC, RelicItems.LEGENDARY_RELIC_EYE_OF_SAURON, DropType.DROP_TYPE, new ItemStack[]{
                 null, null, null,
                 null, null, null,
-                null, null, null}, 2.95, 2, 2)
+                null, null, null}, 1.12, 2, 2)
                 .register(instance);
 
         new MysteriousHolocron(RelicItems.LEGENDARY_RELIC, RelicItems.LEGENDARY_RELIC_MYSTERIOUS_HOLOCRON, DropType.DROP_TYPE, new ItemStack[]{
                 null, null, null,
                 null, null, null,
-                null, null, null}, 2.87, 2, 2)
+                null, null, null}, 1.24, 2, 2)
                 .register(instance);
 
         new SkullOfPrometheus(RelicItems.LEGENDARY_RELIC, RelicItems.LEGENDARY_RELIC_SKULL_OF_PROMETHEUS, DropType.DROP_TYPE, new ItemStack[]{
                 null, null, null,
                 null, null, null,
-                null, null, null}, 1.97, 2, 2)
+                null, null, null}, 1.06, 2, 2)
                 .register(instance);
 
         new MagmaGauntlet(RelicItems.LEGENDARY_RELIC, RelicItems.LEGENDARY_RELIC_MAGMA_GAUNTLET, DropType.DROP_TYPE, new ItemStack[]{
                 null, null, null,
                 null, null, null,
-                null, null, null}, 2.92, 2, 2)
+                null, null, null}, 1.42, 2, 2)
                 .register(instance);
 
         new GlazingPearl(RelicItems.LEGENDARY_RELIC, RelicItems.LEGENDARY_RELIC_GLAZING_PEARL, DropType.DROP_TYPE, new ItemStack[]{
                 null, null, null,
                 null, null, null,
-                null, null, null}, 3.78, 2, 2)
+                null, null, null}, 1.35, 2, 2)
                 .register(instance);
 
         new SapphireRing(RelicItems.LEGENDARY_RELIC, RelicItems.LEGENDARY_RELIC_SAPPHIRE_RING, DropType.DROP_TYPE, new ItemStack[]{
                 null, null, null,
                 null, null, null,
-                null, null, null}, 3.42, 2, 2)
+                null, null, null}, 1.02, 2, 2)
                 .register(instance);
 
     }

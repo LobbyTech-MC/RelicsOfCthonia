@@ -7,12 +7,14 @@ import ne.fnfal113.relicsofcthonia.utils.Utils;
 import org.bukkit.World;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.CreatureSpawnEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.metadata.FixedMetadataValue;
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ThreadLocalRandom;
@@ -25,15 +27,15 @@ public class MobKillListener implements Listener {
 
     @EventHandler
     public void onMobSpawn(CreatureSpawnEvent event){
-        if(event.isCancelled()){
+        if(event.isCancelled()) {
             return;
         }
 
-        if(event.getSpawnReason() != CreatureSpawnEvent.SpawnReason.SPAWNER){
+        if(event.getSpawnReason() != CreatureSpawnEvent.SpawnReason.SPAWNER) {
             return;
         }
 
-        if(event.getEntity().getWorld().getEnvironment() != World.Environment.NETHER){
+        if(event.getEntity().getWorld().getEnvironment() != World.Environment.NETHER) {
             return;
         }
 
@@ -42,7 +44,7 @@ public class MobKillListener implements Listener {
         entity.setMetadata("relic_spawned_mob", new FixedMetadataValue(RelicsOfCthonia.getInstance(), "spawned_mob"));
     }
 
-    @EventHandler
+    @EventHandler(priority = EventPriority.LOWEST)
     public void onMobKill(EntityDeathEvent event) {
         LivingEntity livingEntity = event.getEntity();
 
@@ -54,7 +56,7 @@ public class MobKillListener implements Listener {
             return;
         }
 
-        if(livingEntity.hasMetadata("relic_spawned_mob")){
+        if(livingEntity.hasMetadata("relic_spawned_mob")) {
             livingEntity.removeMetadata("relic_spawned_mob", RelicsOfCthonia.getInstance());
 
             return;
@@ -62,33 +64,48 @@ public class MobKillListener implements Listener {
 
         String entityType = livingEntity.getType().name().toLowerCase();
         World world = livingEntity.getWorld();
+        AtomicInteger itemDroppedCounter = new AtomicInteger(0);
         ThreadLocalRandom currentRandomThread = ThreadLocalRandom.current();
-        AtomicInteger i = new AtomicInteger(0);
 
         Utils.createAsyncTask(asyncTask -> {
-            for (Map.Entry<AbstractRelic, List<String>> entry: getWhereToDropMobMap().entrySet()){
-                AbstractRelic abstractRelic = entry.getKey();
+            Iterator<Map.Entry<AbstractRelic, List<String>>> dropIterator = getWhereToDropMobMap().entrySet().iterator();
+            
+            while (dropIterator.hasNext()){
+                Map.Entry<AbstractRelic, List<String>> pair = dropIterator.next();
+                AbstractRelic abstractRelic = pair.getKey();
 
                 if(abstractRelic.isDisabledIn(world) || abstractRelic.isDisabled()){
+                    asyncTask.cancel();
+
                     continue;
                 }
 
                 // check if relic mob list contains killed mob type
-                if(entry.getValue().contains(entityType)){
+                if(pair.getValue().contains(entityType)) {
+                    // biased probability to lower the chance of repeated values from the current random thread which utilizes same seed
                     double randomOrigin = currentRandomThread.nextDouble(0.0, 60);
-                    double randomNum = currentRandomThread.nextDouble(randomOrigin, 100);
+                    double randomNum = ThreadLocalRandom.current().nextDouble(randomOrigin, 100);
 
                     if(randomNum < abstractRelic.getDropChance()) {
-                        ItemStack drop = abstractRelic.setRelicCondition(true, 0);
+                        ItemStack drop = abstractRelic.setRelicConditionAndGet(true, 0);
+                        
                         Utils.createSyncTask(syncTask -> livingEntity.getWorld().dropItemNaturally(livingEntity.getLocation(), drop));
 
-                        i.getAndIncrement();
+                        itemDroppedCounter.getAndIncrement();
                     }
 
                     // limit to max 2 drops per block only
-                    if(i.get() == 2){
+                    if(itemDroppedCounter.get() == 2){
+                        asyncTask.cancel();
+
                         return;
                     }
+
+                    
+                }
+
+                if(!dropIterator.hasNext()) {
+                    asyncTask.cancel();    
                 }
             }
         });

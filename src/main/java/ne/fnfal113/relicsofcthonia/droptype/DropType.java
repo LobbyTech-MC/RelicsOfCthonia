@@ -11,6 +11,5 @@ public class DropType {
             new NamespacedKey(RelicsOfCthonia.getInstance(), "relic_drop_type_generic"),
             RelicItems.RELIC_DROP_TYPE
     );
-
-
+    
 }

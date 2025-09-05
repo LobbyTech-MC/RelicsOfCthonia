@@ -79,7 +79,7 @@ public class RelicPlaceBreakListener implements Listener {
         Optional<SlimefunItem> relic = Optional.ofNullable(SlimefunItem.getByItem(itemInHand));
 
         relic.ifPresent(item -> {
-            if(item instanceof AbstractRelic){
+            if(item instanceof AbstractRelic) {
                 Utils.sendRelicMessage("You placed a relic, it will not drop anything once broken!", event.getPlayer());
             }
         });
@@ -87,7 +87,7 @@ public class RelicPlaceBreakListener implements Listener {
     }
 
     @EventHandler
-    public void onRelicBreak(BlockBreakEvent event){
+    public void onRelicBreak(BlockBreakEvent event) {
         if(event.isCancelled()){
             return;
         }
@@ -97,7 +97,7 @@ public class RelicPlaceBreakListener implements Listener {
         Optional<SlimefunItem> relic = Optional.ofNullable(BlockStorage.check(blockBroken));
 
         relic.ifPresent(item -> {
-            if(item instanceof AbstractRelic){
+            if(item instanceof AbstractRelic) {
                 event.setCancelled(true);
 
                 BlockStorage.clearBlockInfo(blockBroken);
