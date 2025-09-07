@@ -31,7 +31,7 @@ public class Utils {
             return sfItem.getItemName();
         } else {
         	Material mat = Material.getMaterial(value.toUpperCase());
-            return LangUtils.getMaterialName(mat);
+            return LangUtils.getItemDisplayName(new ItemStack(mat));
         }
     };
     private static final Function<String, String> entityTypeLoreHandler = (value) ->

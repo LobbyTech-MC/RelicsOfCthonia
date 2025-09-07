@@ -68,6 +68,7 @@ public class RelicPlaceBreakListener implements Listener {
 
     }*/
 
+	/*
     @EventHandler
     public void onRelicPlace(BlockPlaceEvent event){
         if(event.isCancelled()){
@@ -85,6 +86,7 @@ public class RelicPlaceBreakListener implements Listener {
         });
 
     }
+    */
 
     @EventHandler
     public void onRelicBreak(BlockBreakEvent event) {
@@ -102,7 +104,7 @@ public class RelicPlaceBreakListener implements Listener {
 
                 BlockStorage.clearBlockInfo(blockBroken);
 
-                blockBroken.setType(Material.AIR);
+                //blockBroken.setType(Material.AIR);
             }
         });
 
