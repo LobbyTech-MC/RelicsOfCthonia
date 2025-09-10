@@ -1,5 +1,13 @@
 package ne.fnfal113.relicsofcthonia;
 
+import java.util.logging.Level;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
+import org.bstats.bukkit.Metrics;
+import org.bukkit.plugin.java.JavaPlugin;
+
 import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
 import ne.fnfal113.relicsofcthonia.config.ConfigManager;
 import ne.fnfal113.relicsofcthonia.items.RelicsItemSetup;
@@ -7,16 +15,8 @@ import ne.fnfal113.relicsofcthonia.listeners.MiningListener;
 import ne.fnfal113.relicsofcthonia.listeners.MobKillListener;
 import ne.fnfal113.relicsofcthonia.listeners.OffHandClickListener;
 import ne.fnfal113.relicsofcthonia.listeners.PiglinMainListener;
-import ne.fnfal113.relicsofcthonia.listeners.RelicPlaceBreakListener;
 import ne.fnfal113.relicsofcthonia.listeners.RelicVoiderListener;
-
 import net.guizhanss.guizhanlibplugin.updater.GuizhanUpdater;
-import org.bstats.bukkit.Metrics;
-import org.bukkit.plugin.java.JavaPlugin;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-import java.util.logging.Level;
 
 public final class RelicsOfCthonia extends JavaPlugin implements SlimefunAddon {
 
@@ -63,7 +63,7 @@ public final class RelicsOfCthonia extends JavaPlugin implements SlimefunAddon {
         getServer().getPluginManager().registerEvents(new MobKillListener(), this);
         getServer().getPluginManager().registerEvents(new PiglinMainListener(), this);
         getServer().getPluginManager().registerEvents(new OffHandClickListener(), this);
-        getServer().getPluginManager().registerEvents(new RelicPlaceBreakListener(), this);
+        //getServer().getPluginManager().registerEvents(new RelicPlaceBreakListener(), this);
         getServer().getPluginManager().registerEvents(new RelicVoiderListener(), this);
     }
 
