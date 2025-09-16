@@ -30,7 +30,7 @@ public class Utils {
         if (sfItem != null) {
             return sfItem.getItemName();
         } else {
-        	Material mat = Material.getMaterial(value.toUpperCase());
+        	Material mat = Material.getMaterial(value.replace(" ", "_").toLowerCase());
             return LangUtils.getI18NDisplayName(new ItemStack(mat));
         }
     };
