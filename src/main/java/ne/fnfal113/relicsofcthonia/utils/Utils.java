@@ -30,12 +30,12 @@ public class Utils {
         if (sfItem != null) {
             return sfItem.getItemName();
         } else {
-        	Material mat = Material.getMaterial(value.replace(" ", "_").toLowerCase());
+        	Material mat = Material.getMaterial(value.replace(" ", "_").toUpperCase());
         	if (mat != null) {
-        		return LangUtils.getMessage(mat.getItemTranslationKey());
+        		return LangUtils.getMaterialName(mat);
         	}
         }
-		return value.replace("_", "").toLowerCase();
+		return value.replace("_", " ").toLowerCase();
     };
     private static final Function<String, String> entityTypeLoreHandler = (value) ->
         EntityTypeHelper.getName(StringUtil.dehumanize(value));
