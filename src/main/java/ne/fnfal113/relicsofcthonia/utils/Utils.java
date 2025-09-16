@@ -26,13 +26,16 @@ import net.md_5.bungee.api.ChatColor;
 public class Utils {
 
     private static final Function<String, String> materialLoreHandler = (value) -> {
-        SlimefunItem sfItem = SlimefunItem.getById(value);
+        SlimefunItem sfItem = SlimefunItem.getById(value.toUpperCase());
         if (sfItem != null) {
             return sfItem.getItemName();
         } else {
         	Material mat = Material.getMaterial(value.replace(" ", "_").toLowerCase());
-            return LangUtils.getI18NDisplayName(new ItemStack(mat));
+        	if (mat != null) {
+        		return LangUtils.getMessage(mat.getItemTranslationKey());
+        	}
         }
+		return value.replace("_", "").toLowerCase();
     };
     private static final Function<String, String> entityTypeLoreHandler = (value) ->
         EntityTypeHelper.getName(StringUtil.dehumanize(value));
